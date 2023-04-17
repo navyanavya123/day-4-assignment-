@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Player {
+    char name[50];
+    int runs;
+};
+
+int main() {
+    int n;
+    printf("Enter the number of players: ");
+    scanf("%d", &n);
+    
+    struct Player team[n];
+    
+    int i, total_runs = 0;
+    for(i=0; i<n; i++) {
+        printf("Enter the name of player %d: ", i+1);
+        scanf("%s", team[i].name);
+        printf("Enter the runs scored by player %d: ", i+1);
+        scanf("%d", &team[i].runs);
+        total_runs += team[i].runs;
+    }
+    
+    printf("\nBatting information of cricket team:\n");
+    printf("Player\tRuns\n");
+    for(i=0; i<n; i++) {
+        printf("%s\t%d\n", team[i].name, team[i].runs);
+    }
+    printf("Total runs: %d\n", total_runs);
+    
+    return 0;
+}
