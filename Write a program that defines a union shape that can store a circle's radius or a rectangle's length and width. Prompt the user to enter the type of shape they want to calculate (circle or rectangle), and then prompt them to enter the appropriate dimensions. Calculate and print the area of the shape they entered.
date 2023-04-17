@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+// Define the union variable "shape"
+union Shape {
+    float radius;
+    struct {
+        float length;
+        float width;
+    } rectangle;
+};
+
+int main() {
+    // Declare the union variable "shape"
+    union Shape shape;
+    
+    // Prompt the user to enter the type of shape they want to calculate
+    char shapeType;
+    printf("Enter the type of shape you want to calculate (C for Circle, R for Rectangle): ");
+    scanf("%c", &shapeType);
+    
+    // Prompt the user to enter the appropriate dimensions
+    if (shapeType == 'C' || shapeType == 'c') {
+        printf("Enter the radius of the circle: ");
+        scanf("%f", &shape.radius);
+        float area = 3.14 * shape.radius * shape.radius;
+        printf("Area of the circle with radius %.2f is %.2f\n", shape.radius, area);
+    } else if (shapeType == 'R' || shapeType == 'r') {
+        printf("Enter the length of the rectangle: ");
+        scanf("%f", &shape.rectangle.length);
+        printf("Enter the width of the rectangle: ");
+        scanf("%f", &shape.rectangle.width);
+        float area = shape.rectangle.length * shape.rectangle.width;
+        printf("Area of the rectangle with length %.2f and width %.2f is %.2f\n", shape.rectangle.length, shape.rectangle.width, area);
+    } else {
+        printf("Invalid input!\n");
+    }
+    
+    return 0;
+}
