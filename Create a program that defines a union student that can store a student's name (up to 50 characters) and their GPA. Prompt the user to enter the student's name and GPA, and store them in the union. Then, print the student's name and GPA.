@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define the union variable "student"
+union Student {
+    char name[50];
+    float gpa;
+};
+
+int main() {
+    // Declare the union variable "student"
+    union Student student;
+    
+    // Prompt the user to enter the student's name and GPA
+    printf("Enter the student's name: ");
+    fgets(student.name, 50, stdin);
+    student.name[strcspn(student.name, "\n")] = '\0'; // Remove the newline character from the end of the name
+    printf("Enter the student's GPA: ");
+    scanf("%f", &student.gpa);
+    
+    // Print the student's name and GPA
+    printf("Student's name: %s\n", student.name);
+    printf("Student's GPA: %.2f\n", student.gpa);
+    
+    return 0;
+}
